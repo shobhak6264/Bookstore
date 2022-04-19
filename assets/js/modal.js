@@ -1,0 +1,44 @@
+import {
+  createElement,
+} from "./create.js";
+
+let modal_displayy = createElement("div",null);
+let modal_container =createElement("div",null,"modal-container");
+let book_content = createElement("div",null,"book-content","book-content");
+let header = createElement("h6","Book Details");
+let book_container = createElement("div",null,"book-container");
+let popedbook = createElement("div",null,"poped-book","popedbook");
+let book_img=createElement("img",null,"book-img","popedimg");
+book_img.setAttribute("data-book","book");
+let book_details = createElement("div",null);
+let title_header = createElement("label","Title");
+let title = createElement("h6",null,null,"title");
+let author_header = createElement("label","author");
+let author = createElement("h6",null,null,"author");
+let contributor_header = createElement("label","contributor");
+let contributor = createElement("h6",null,null,"contributor");
+let publisher_header = createElement("label","publisher");
+let publisher = createElement("h6",null,null,"publisher");
+let description_header = createElement("label","description");
+let description = createElement("h6",null,null,"description");
+let buy_links_header = createElement("label","buy Links");
+let buy_linkss = createElement("div",null,"buy-links","buylinks");
+let similar_content = createElement("div",null,"similar-content","similar-content");
+let similar_control = createElement("div",null,"similar-control");
+let similar_books = createElement("h6","Similar Books");
+let hidepopup = createElement("button","X",null,"hidePopUp");
+let similar_container = createElement("div",null,"similar-container","similar-container");
+let review_content = createElement("div",null,"review-content","review-content");
+let book_reviews = createElement("h6","Book Reviews");
+let review_container = createElement("div",null,"review-container","review-container");
+let default_review = createElement("p",null,"default-review","default-review");
+book_details.append(title_header,title,author_header,author,contributor_header,contributor,publisher_header,publisher,description_header,description,buy_links_header,buy_linkss);
+similar_control.append(similar_books,hidepopup);
+similar_content.append(similar_control,similar_container);
+review_container.appendChild(default_review);
+review_content.append(book_reviews,review_container);
+popedbook.appendChild(book_img);
+book_container.append(popedbook,book_details);
+book_content.append(header,book_container);
+modal_container.append(book_content,similar_content,review_content);
+modal_displayy.append(modal_container);

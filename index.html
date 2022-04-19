@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Book Store</title>
+<link rel="stylesheet" type="text/css" href="./assets/css/style.css"></link>
+<body>
+    <header>
+        <div id="header" style="background-image:url(../assets/images/bgimg.jpg)">
+        <h2 id="header-title">New York Times Book Store</h2>
+        </div>
+    </header>
+    <section class="filter">
+        <div class="filter-dropdown">
+            <label for="Genre">Choose a Genre</label>
+            <select name="books_filter" id="genre">
+              <option value="all">All</option>
+            </select>
+            <button type="submit" id="submit">SUBMIT</button>
+        </div>
+        <div class="filter-date">
+
+        </div>
+    </section>
+    <div id="render">
+        <!-- <div id="div-title">                    
+        </div> -->
+    </div>
+    <div id="modal_display">
+        <div class="modal-container">
+            <div id="book-content" class="book-content">
+                <h6>Book Details</h6>
+                <div class="book-container">
+                    <div id="popedbook" class="poped-book">
+                        <img src="" class="book-img" data-book="book" id="popedimg">
+                    </div>
+                    <div class="book-details">
+                        <label>Title</label>
+                        <h6 id="title" ></h6>
+                        <label>Author</label>
+                        <h6 id="author"></h6>
+                        <label>Contributor</label>
+                        <h6 id="contributor" ></h6> 
+                        <label>Publisher</label>
+                        <h6 id="publisher"></h6>
+                        <label>Description</label>
+                        <p id="description"></p>
+                        <label>Buy Links</label>
+                        <div id="buylinks" class="buy-links"></div>
+                    </div>
+                </div>
+            </div>
+            <div  id ="similar-content"class="similar-content">
+                <div class="similar-control"> 
+                    <h6>Similar Books</h6>
+                    <button id="hidePopUp"> X </button>
+                </div>
+                <div class="similar-container" id="similar-container"></div>
+                
+            </div>
+            <div id ="review-content" class="review-content">
+                <h6>Book Reviews</h6>
+                <div class="review-container" id="review-container">
+                    <p id="default-review"  class="default-review"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/script.js" type="module"></script>
+</body>
+</head>
+</html>
