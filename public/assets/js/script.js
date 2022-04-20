@@ -136,16 +136,19 @@ function modal_display(
   document.getElementById("description").innerHTML = s_des;
   document.getElementById("contributor").innerHTML = s_cont;
   document.getElementById("publisher").innerHTML = s_pub;
+  document.getElementById("default-review").innerHTML = "";
   fetch(
     `https://api.nytimes.com/svc/books/v3/reviews.json?api-key=Gtdym4qr4grJV7x3aOBuAu0CcmchgkGj&title=${s_title}`
   )
     .then((response) => response.json())
     .then((response) => {
-      if (response.results[0].summary == null) {
+      if(response.num_results === 0){
         document.getElementById("default-review").innerHTML =
           "NO REVIEWS FOUND FOR THIS BOOK";
-      } else {
+      }
+      else if (response.num_results != 0) {
         document.getElementById("default-review").innerHTML = response.results[0].summary;
+        
       }
     })
     .catch((err) => console.error(err));
@@ -154,7 +157,7 @@ function modal_display(
       "buylinks"
     ).innerHTML += `<a href="${nu.url}" target="_blank">${nu.name}</a>`;
   });
-  console.log(kk);
+  // console.log(kk);
   // dataa.results.lists[0].books.forEach( s => {
   //   console.log(s);
   // });
