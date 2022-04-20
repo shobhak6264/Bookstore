@@ -165,9 +165,15 @@ function modal_display(
   }
   else {
     data.forEach ( img => {
-      const imgg = createImage("img", img.book_image);
+      console.log(img.length);
+      for(let h=0;h<img.length;h++)
+      {
+        const imgg = createImage("img", img[h].book_image);
       imgg.setAttribute("style", "padding:5px;width:331px;height:500px");
       document.getElementById("similar-container").appendChild(imgg);
+      }
+      
+      
     })
   }
 }
