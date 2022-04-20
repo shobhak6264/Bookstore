@@ -4,23 +4,25 @@ let btn_submit = document.getElementById("submit");
 let card_display = document.getElementById("render");
 
 import { createElement, createImage, createFilter } from "./create.js";
-
-fetch(
-  "https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=Gtdym4qr4grJV7x3aOBuAu0CcmchgkGj"
-)
-  .then((response) => response.json())
-  .then((response) => getList(response))
-  .catch((err) => console.error(err));
-
-function getList(response) {
-  createFilter(response);
-  renderHeader(0, response.results.lists.length, response);
-}
-let id_val = "";
+let response_data="";let id_val = "";
 let div1 = "";
 let disp = [{}];
 let display_sections = [{}];
 let buy_links = "";
+fetch(
+  "https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=Gtdym4qr4grJV7x3aOBuAu0CcmchgkGj"
+)
+  .then((response) => response.json())
+  .then((response) =>  {
+    getList(response)
+    
+
+  
+function getList(response) {
+  createFilter(response);
+  renderHeader(0, response.results.lists.length, response);
+}
+
 function renderHeader(st, end, books) {
   let i = 0;
   let list = books.results;
@@ -61,10 +63,9 @@ async function render(data, i, section_title) {
         "!" +
         path.book_review_link +
         "!" +
-        data +
-        "!" +
-        i
+        path.primary_isbn10 
     );
+    img.setAttribute("onclick","console.log(hello)");
 
     div1.appendChild(img);
     display_sections.push(div1);
@@ -106,7 +107,6 @@ card_display.onclick = function (event) {
     modalarray[4],
     modalarray[5],
     modalarray[6],
-    modalarray[7]
   );
   if (event.target == modal) {
     modal.style.display = "none";
@@ -124,9 +124,7 @@ function modal_display(
   s_des,
   s_cont,
   s_pub,
-  s_rev,
-  dataa,
-  index1
+  s_isbn
 ) {
   modal.style.display = "block";
   document.getElementById("buylinks").innerHTML = "";
@@ -142,7 +140,7 @@ function modal_display(
   )
     .then((response) => response.json())
     .then((response) => {
-      if(response.num_results === 0){
+      if(response.num_resultss === 0){
         document.getElementById("default-review").innerHTML =
           "NO REVIEWS FOUND FOR THIS BOOK";
       }
@@ -157,8 +155,22 @@ function modal_display(
       "buylinks"
     ).innerHTML += `<a href="${nu.url}" target="_blank">${nu.name}</a>`;
   });
-  // console.log(kk);
-  // dataa.results.lists[0].books.forEach( s => {
-  //   console.log(s);
-  // });
+  const data = response.results.lists.map(item => {
+    return item.books.filter(book => book.primary_isbn10 === s_isbn)
+  });
+  console.log(data);
+  if(data === null)
+  {
+
+  }
+  else {
+    data.forEach ( img => {
+      const imgg = createImage("img", img.book_image);
+      imgg.setAttribute("style", "padding:5px;width:331px;height:500px");
+      document.getElementById("similar-container").appendChild(imgg);
+    })
+  }
 }
+
+})
+.catch((err) => console.error(err));
