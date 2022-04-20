@@ -70,10 +70,6 @@ async function render(data, i, section_title) {
     display_sections.push(div1);
   });
   disp.push(display_sections);
-  // const index1=data.results.lists[i].books.findIndex( el => {
-  //   el.title==="RUN, ROSE, RUN"
-  // } );
-  // console.log(index1);
   btn_submit.onclick = () => {
     let j = 0;
     let k = 0;
@@ -140,13 +136,19 @@ function modal_display(
   document.getElementById("description").innerHTML = s_des;
   document.getElementById("contributor").innerHTML = s_cont;
   document.getElementById("publisher").innerHTML = s_pub;
-  if (s_rev == null) {
-    document.getElementById("default-review").innerHTML =
-      "NO REVIEWS FOUND FOR THIS BOOK";
-  } else {
-    document.getElementById("default-review").innerHTML = s_pub;
-  }
-
+  fetch(
+    `https://api.nytimes.com/svc/books/v3/reviews.json?api-key=Gtdym4qr4grJV7x3aOBuAu0CcmchgkGj&title=${s_title}`
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      if (response.results[0].summary == null) {
+        document.getElementById("default-review").innerHTML =
+          "NO REVIEWS FOUND FOR THIS BOOK";
+      } else {
+        document.getElementById("default-review").innerHTML = response.results[0].summary;
+      }
+    })
+    .catch((err) => console.error(err));
   buy_links.forEach((nu) => {
     document.getElementById(
       "buylinks"
