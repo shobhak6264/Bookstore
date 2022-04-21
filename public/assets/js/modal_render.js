@@ -10,7 +10,7 @@ card_display.onclick = function (event) {
   
 };
 similar_books.onclick = function (event) {
-    modal.innerHTML=``;
+    // modal.innerHTML=``;
     let img_id = event.target.id;
     let img_src=event.target.src;
       render_modal(img_id,img_src);
@@ -21,7 +21,7 @@ function render_modal(img_id,img_src)
 {
     let data = "";
     getData().then((res) => {
-        document.getElementById("similar-container").innerHTML = ``;
+        // document.getElementById("similar-container").innerHTML = ``;
         data = res.results.lists.map((item) => {
           return item.books.filter((book) => book.primary_isbn10 === img_id);
         });
