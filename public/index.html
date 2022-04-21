@@ -4,8 +4,17 @@
 <link rel="stylesheet" type="text/css" href="./assets/css/style.css"></link>
 <body>
     <header>
-        <div id="header" style="background-image:url(../assets/images/bgimg.jpg)">
+        <div id="header" style="background-image:url(https://ramjibs.github.io/bookstore/asset/bgimg.jpg)">
         <h2 id="header-title">New York Times Book Store</h2>
+         <div class="books-all-filter">       
+        <select name="books_filter" id="all-filters">
+            <option value="author">Author</option>
+            <option value="booktitle">Book Title</option>
+            <option value="publisher">Publisher</option>
+          </select>
+          <input type="text" placeholder="Enter your suggestions" id="filter-text"/>
+          <button class="btn-submit-filters">TRY MY LUCK</button>
+          </div>
         </div>
     </header>
     <section class="filter">
@@ -21,8 +30,6 @@
         </div>
     </section>
     <div id="render">
-        <!-- <div id="div-title">                    
-        </div> -->
     </div>
     <div id="modal_display">
         <div class="modal-container">
@@ -65,6 +72,8 @@
         </div>
     </div>
     <script src="assets/js/script.js" type="module"></script>
+    <script src="assets/js/modal_render.js" type="module"></script>
+    <script src="assets/js/filter.js" type="module"></script>
 </body>
 </head>
 </html>

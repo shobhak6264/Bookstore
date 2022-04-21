@@ -1,29 +1,16 @@
-function createElement(elType, content,attribute_1,attribute_2) {
+function createElement(elType, content) {
     const title = document.createElement(elType);
-   
-    // if(attribute_1==null)
-    // {
-    //   title.setAttribute("id",attribute_2);
-    // }
-    // else if(attribute_2==null)
-    // {
-    //   title.setAttribute("class",attribute_1);
-    // }
     if(content==null)
     {
-      // title.setAttribute("id",id);
       return title;
     }
     else
     {
-      title.setAttribute("class",attribute_1);
-      title.setAttribute("id",attribute_2);
       title.innerText = content;
 
     return title;
 
     }
-    console.log(title);
   }
 
   function createImage(elType, content) {
@@ -34,6 +21,7 @@ function createElement(elType, content,attribute_1,attribute_2) {
 
   function createFilter(response)
   {
+    // let all_filter = createElement("option","all")
     response.results.lists.forEach((genreList) => {
       let filter_option=document.createElement('option'); 
       filter_option.innerText = genreList.display_name;

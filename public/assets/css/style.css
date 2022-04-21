@@ -20,6 +20,21 @@
   /* background-color: #272727; */
 }
 
+#all-filters {
+      height: 150%;
+  border-radius: 15px 0 0 15px;
+}
+
+#filter-text{
+      height: 150%;
+}
+
+.btn-submit-filters{
+      height: 150%;
+  border-radius: 0 15px 15px 0;
+  color: antiquewhite;
+  background-color: darkgreen;
+}
 .flex-container > div {
   /* background-color: #fbfbfd; */
   width: 350px;
@@ -210,7 +225,7 @@
   flex-direction: column;
   overflow-y: auto;
   overflow-x: scroll;
-  height: 25rem;
+  height: 54rem;
   padding: 2rem;
   padding-bottom: 0;
 }
