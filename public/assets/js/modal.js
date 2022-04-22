@@ -49,7 +49,8 @@ export let hidepopup = createElement("button","X");
 createAttribute(hidepopup,"hidePopUp");
 export let similar_container = createElement("div");
 createAttribute(similar_container,"similar-container","similar-container");
-export let review_content = createElement("div",null,"review-content","review-content");
+export let review_content = createElement("div");
+createAttribute(review_content,"review-content","review-content");
 export let book_reviews = createElement("h6","Book Reviews");
 export let review_container = createElement("div");
 createAttribute(review_container,"review-container","review-container");
@@ -69,7 +70,9 @@ export function get_reviews (title) {
           response.results[0].summary;
       }
     })
-    .catch((err) => console.error(err));
+    .catch((err) => 
+    alert("err")
+    );
 }
 
 export function get_similar_books (isbn) {

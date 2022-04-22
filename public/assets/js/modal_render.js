@@ -3,8 +3,6 @@ import { getData } from "./script.js";
 import {book_img , title , author , contributor , publisher , description , buy_links , similar_container , default_review , get_reviews , get_similar_books } from "./modal.js";
 let modal = document.getElementById("modal_display");
 let card_display = document.getElementById("render");
-// let similar_books = document.getElementById("similar-container");
-let review_bind="";let similar_books="";
 card_display.onclick = function (event) {
   let img_id = event.target.id;
   let img_src=event.target.src;
@@ -23,7 +21,6 @@ function render_modal(img_id,img_src)
 {
     let data = "";
     getData().then((res) => {
-        // document.getElementById("similar-container").innerHTML = ``;
         data = res.results.lists.map((item) => {
           return item.books.filter((book) => book.primary_isbn10 === img_id);
         });
@@ -46,9 +43,6 @@ function render_modal(img_id,img_src)
           i++;
         });
       });
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
 }
 
 document.getElementById("hidePopUp").onclick = function (event) {
@@ -68,8 +62,8 @@ function modal_display(s_title, s_img,s_author,s_des,s_cont,s_pub, s_isbn,s_buy_
   s_buy_links.forEach((nu) => {
     document.getElementById("buylinks").innerHTML += `<a href="${nu.url}" target="_blank">${nu.name}</a>`;
   });
-    review_bind = get_reviews(s_title);
-    similar_books = get_similar_books(s_isbn);
+    get_reviews(s_title);
+    get_similar_books(s_isbn);
 
   
 }
