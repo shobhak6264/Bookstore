@@ -1,15 +1,17 @@
 import { getData } from "./script.js";
-import { createImage } from "./create.js";
-let card_display = document.getElementById("render");
-let similar_books = document.getElementById("similar-container");
+
+import {book_img , title , author , contributor , publisher , description , buy_links , similar_container , default_review , get_reviews , get_similar_books } from "./modal.js";
 let modal = document.getElementById("modal_display");
+let card_display = document.getElementById("render");
+// let similar_books = document.getElementById("similar-container");
+let review_bind="";let similar_books="";
 card_display.onclick = function (event) {
   let img_id = event.target.id;
   let img_src=event.target.src;
     render_modal(img_id,img_src);
   
 };
-similar_books.onclick = function (event) {
+similar_container.onclick = function (event) {
     // modal.innerHTML=``;
     let img_id = event.target.id;
     let img_src=event.target.src;
@@ -55,46 +57,19 @@ document.getElementById("hidePopUp").onclick = function (event) {
 
 function modal_display(s_title, s_img,s_author,s_des,s_cont,s_pub, s_isbn,s_buy_links) {
   modal.style.display = "block";
-  document.getElementById("buylinks").innerHTML = ``;
-  document.getElementById("popedimg").setAttribute("src", s_img);
-  document.getElementById("title").innerHTML = s_title;
-  document.getElementById("author").innerHTML = s_author;
-  document.getElementById("description").innerHTML = s_des;
-  document.getElementById("contributor").innerHTML = s_cont;
-  document.getElementById("publisher").innerHTML = s_pub;
-  document.getElementById("default-review").innerHTML = "";
+  buy_links.innerHTML = ``;
+  book_img.setAttribute("src", s_img);
+  title.innerHTML = s_title;
+  author.innerHTML = s_author;
+  description.innerHTML = s_des;
+  contributor.innerHTML = s_cont;
+  publisher.innerHTML = s_pub;
+  default_review.innerHTML = "";
   s_buy_links.forEach((nu) => {
     document.getElementById("buylinks").innerHTML += `<a href="${nu.url}" target="_blank">${nu.name}</a>`;
   });
-  fetch(
-    `https://api.nytimes.com/svc/books/v3/reviews.json?api-key=Gtdym4qr4grJV7x3aOBuAu0CcmchgkGj&title=${s_title}`
-  )
-    .then((response) => response.json())
-    .then((response) => {
-      if (response.num_results === 0) {
-        document.getElementById("default-review").innerHTML =
-          "NO REVIEWS FOUND FOR THIS BOOK";
-      } else if (response.num_results != 0) {
-        document.getElementById("default-review").innerHTML =
-          response.results[0].summary;
-      }
-    })
-    .catch((err) => console.error(err));
+    review_bind = get_reviews(s_title);
+    similar_books = get_similar_books(s_isbn);
 
-  getData().then((res) => {
-    document.getElementById("similar-container").innerHTML = ``;
-    const data = res.results.lists.map((item) => {
-      return item.books.filter((book) => book.primary_isbn10 !== s_isbn);
-    });
-    if (data === null) {
-    } else {
-      data.forEach((img) => {
-        for (let h = 0; h < img.length; h++) {
-          const imgg = createImage("img", img[h].book_image);
-          imgg.setAttribute("style", "padding:5px;width:331px;height:500px");
-          document.getElementById("similar-container").appendChild(imgg);
-        }
-      });
-    }
-  });
+  
 }

@@ -19,6 +19,21 @@ function createElement(elType, content) {
     return div;
   }
 
+  function createAttribute(component,id,classname)
+  {
+    if(id!==null&&classname===null)
+    {
+      component.setAttribute("id",id);
+    }
+    if(id!==null&&classname===null)
+    {
+      component.setAttribute("class",classname);
+    }
+    else{
+      component.setAttribute("id",id);
+      component.setAttribute("class",classname);
+    }
+  }
   function createFilter(response)
   {
     // let all_filter = createElement("option","all")
@@ -32,5 +47,5 @@ function createElement(elType, content) {
   }
  
 
-  export {createElement,createImage,createFilter}
+  export {createElement,createImage,createFilter,createAttribute}
   
