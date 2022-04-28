@@ -2,6 +2,8 @@
 <head>
 <title>Book Store</title>
 <link rel="stylesheet" type="text/css" href="./assets/css/style.css"></link>
+<!-- <link rel="stylesheet" type="text/css" href="./assets/css/style.scss"></link> -->
+
 <body>
     <header>
         <div id="header" style="background-image:url(https://ramjibs.github.io/bookstore/asset/bgimg.jpg)">
@@ -13,7 +15,7 @@
             <option value="publisher">Publisher</option>
           </select>
           <input type="text" placeholder="Enter your suggestions" id="filter-text"/>
-          <button class="btn-submit-filters">TRY MY LUCK</button>
+          <button class="btn-submit-filters" >TRY MY LUCK</button>
           </div>
         </div>
     </header>
@@ -32,46 +34,15 @@
     <div id="render">
     </div>
     <div id="modal_display">
-        <!-- <div class="modal-container">
-            <div id="book-content" class="book-content">
-                <h6>Book Details</h6>
-                <div class="book-container">
-                    <div id="popedbook" class="poped-book">
-                        <img src="" class="book-img" data-book="book" id="popedimg">
-                    </div>
-                    <div class="book-details">
-                        <label>Title</label>
-                        <h6 id="title" ></h6>
-                        <label>Author</label>
-                        <h6 id="author"></h6>
-                        <label>Contributor</label>
-                        <h6 id="contributor" ></h6> 
-                        <label>Publisher</label>
-                        <h6 id="publisher"></h6>
-                        <label>Description</label>
-                        <p id="description"></p>
-                        <label>Buy Links</label>
-                        <div id="buylinks" class="buy-links"></div>
-                    </div>
-                </div>
-            </div>
-            <div  id ="similar-content"class="similar-content">
-                <div class="similar-control"> 
-                    <h6>Similar Books</h6>
-                    <button id="hidePopUp"> X </button>
-                </div>
-                <div class="similar-container" id="similar-container"></div>
-                
-            </div>
-            <div id ="review-content" class="review-content">
-                <h6>Book Reviews</h6>
-                <div class="review-container" id="review-container">
-                    <p id="default-review"  class="default-review"></p>
-                </div>
-            </div>
-        </div> -->
     </div>
+    <div class="preloader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
     <script src="assets/js/script.js" type="module"></script>
+    <script src="assets/js/search.js" type="module"></script>
     <script src="assets/js/modal.js" type="module"></script>
     <script src="assets/js/modal_render.js" type="module"></script>
     <script src="assets/js/filter.js" type="module"></script>

@@ -11,6 +11,19 @@ export const getData = () => {
     
 };
 
+export const getIP = () => {
+    return fetch(
+      "https://gwarflbvd2.execute-api.us-west-1.amazonaws.com/dev/whatismyip"
+    )
+      .then((res) => res.json())
+      
+  };
+
+  getIP().then((response) => {
+   console.log(response);
+  });
+  
+
 function getList() {
   getData().then((response) => {
     response_data = response; 

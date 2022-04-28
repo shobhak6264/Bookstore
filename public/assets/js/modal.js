@@ -7,6 +7,10 @@ import { getData } from "./script.js";
 let modal_displayy = document.getElementById("modal_display");
 // export let modal_displayy = createElement("div",null);
 // modal_displayy.setAttribute("id","modal_display");
+// function formModal() {
+  
+// }
+
 
 export let modal_container =createElement("div",null);
 createAttribute(modal_container,null,"modal-container")
@@ -95,18 +99,19 @@ export function get_similar_books (isbn) {
 }
 
 
-createAttribute(default_review,"default-review","default-review");
-book_details.append(title_header,title,author_header,author,contributor_header,contributor,publisher_header,publisher,description_header,description,buy_links_header,buy_links);
-similar_control.append(similar_books,hidepopup);
-similar_content.append(similar_control,similar_container);
-review_container.appendChild(default_review);
-review_content.append(book_reviews,review_container);
-popedbook.appendChild(book_img);
-book_container.append(popedbook,book_details);
-book_content.append(header,book_container);
-modal_container.append(book_content,similar_content,review_content);
-modal_displayy.append(modal_container);
-
-
-
-
+export function createModal() {
+  
+  createAttribute(default_review,"default-review","default-review");
+  book_details.append(title_header,title,author_header,author,contributor_header,contributor,publisher_header,publisher,description_header,description,buy_links_header,buy_links);
+  similar_control.append(similar_books,hidepopup);
+  similar_content.append(similar_control,similar_container);
+  review_container.appendChild(default_review);
+  review_content.append(book_reviews,review_container);
+  popedbook.appendChild(book_img);
+  book_container.append(popedbook,book_details);
+  book_content.append(header,book_container);
+  modal_container.append(book_content,similar_content,review_content);
+  return modal_displayy.append(modal_container);
+  
+  
+}  

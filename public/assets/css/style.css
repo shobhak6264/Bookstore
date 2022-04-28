@@ -223,8 +223,8 @@
   flex: 2;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: scroll;
+  /* overflow-y: auto;
+  overflow-x: scroll; */
   height: 54rem;
   padding: 2rem;
   padding-bottom: 0;

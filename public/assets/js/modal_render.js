@@ -1,6 +1,6 @@
 import { getData } from "./script.js";
 
-import {book_img , title , author , contributor , publisher , description , buy_links , similar_container , default_review , get_reviews , get_similar_books } from "./modal.js";
+import {book_img , title , author , contributor , publisher , description , buy_links , similar_container , default_review , hidepopup ,get_reviews , get_similar_books ,createModal } from "./modal.js";
 let modal = document.getElementById("modal_display");
 let card_display = document.getElementById("render");
 card_display.onclick = function (event) {
@@ -27,7 +27,6 @@ function render_modal(img_id,img_src)
         let i=0;
         data.forEach((list) => {
           if (list.length === 0) {
-              console.log("Array length is zero");
           } else {
             modal_display(
               list[0].title,
@@ -45,11 +44,12 @@ function render_modal(img_id,img_src)
       });
 }
 
-document.getElementById("hidePopUp").onclick = function (event) {
+hidepopup.onclick = function (event) {
   modal.style.display = "none";
 };
 
 function modal_display(s_title, s_img,s_author,s_des,s_cont,s_pub, s_isbn,s_buy_links) {
+  const f  = createModal();
   modal.style.display = "block";
   buy_links.innerHTML = ``;
   book_img.setAttribute("src", s_img);
